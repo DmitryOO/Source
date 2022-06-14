@@ -15155,6 +15155,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_changeModalState__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/changeModalState */ "./src/js/modules/changeModalState.js");
 /* harmony import */ var _modules_checkNumInputs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/checkNumInputs */ "./src/js/modules/checkNumInputs.js");
 /* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/timer */ "./src/js/modules/timer.js");
+/* harmony import */ var _modules_images__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/images */ "./src/js/modules/images.js");
+
 
 
 
@@ -15174,6 +15176,7 @@ window.addEventListener('DOMContentLoaded', () => {
   Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.balcon_icons', '.balcon_icons_img', '.big_img img', 'do_image_more', 'inline');
   Object(_modules_forms__WEBPACK_IMPORTED_MODULE_3__["default"])(modalState);
   Object(_modules_timer__WEBPACK_IMPORTED_MODULE_6__["default"])('#timer', deadline);
+  Object(_modules_images__WEBPACK_IMPORTED_MODULE_7__["default"])();
 });
 
 /***/ }),
@@ -15340,6 +15343,48 @@ const forms = state => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (forms);
+
+/***/ }),
+
+/***/ "./src/js/modules/images.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/images.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const images = () => {
+  const imgPopUp = document.createElement('div'),
+        workSection = document.querySelector('.works'),
+        bigImg = document.createElement('img');
+  imgPopUp.classList.add('popup');
+  workSection.appendChild(imgPopUp);
+  imgPopUp.style.justifyContent = 'center';
+  imgPopUp.style.alignItems = 'center';
+  imgPopUp.style.display = 'none';
+  imgPopUp.appendChild(bigImg);
+  workSection.addEventListener('click', e => {
+    e.preventDefault();
+    let target = e.target;
+
+    if (target && target.classList.contains('preview')) {
+      imgPopUp.style.display = 'flex';
+      const path = target.parentNode.getAttribute('href');
+      bigImg.setAttribute('src', path);
+      bigImg.style.maxWidth = '100%';
+      document.body.style.overflow = 'hidden';
+    }
+
+    if (target && target.matches('div.popup')) {
+      target.style.display = 'none';
+      document.body.style.overflow = 'visible';
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (images);
 
 /***/ }),
 
